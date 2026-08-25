@@ -3,7 +3,7 @@
 An ultra-high-end 3D Creator style portfolio landing page built using React, TypeScript, Tailwind CSS, Framer Motion, and Lucide React.
 
 ## 🚀 Live Demo
-- Portfolio Site: Localhost Development Server Port 3000
+- Portfolio Site: https://portfolio-two-theta-sz6xoinqk3.vercel.app/
 - PizzaGo Live: [pizzadelivary.vercel.app](https://pizzadelivary.vercel.app/)
 - Heart Stroke Prediction Live: [Streamlit Portal](https://heart-strokepredictiongit-ebzbnpfjuqghjb7tdubznv.streamlit.app/)
 

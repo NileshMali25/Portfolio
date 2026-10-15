@@ -126,6 +126,14 @@ export const MARQUEE_ROW_2: MarqueeItem[] = [
     iconPath: 'M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0'
   },
   {
+    id: 'm14_2',
+    title: 'MindScore AI — Mental Health',
+    subtitle: 'Lifestyle & Wellness Predictor',
+    gradientStart: '#10B981',
+    gradientEnd: '#06B6D4',
+    iconPath: 'M12 2a10 10 0 100 20 10 10 0 000-20zM12 6v6l4 2'
+  },
+  {
     id: 'm15',
     title: 'Heart Stroke Prediction',
     subtitle: 'Healthcare ML Prediction',
@@ -175,6 +183,11 @@ export const MARQUEE_ROW_2: MarqueeItem[] = [
   }
 ];
 
+export interface ProjectGalleryImage {
+  url: string;
+  label: string;
+}
+
 export interface ProjectItem {
   id: string;
   number: string;
@@ -185,6 +198,7 @@ export interface ProjectItem {
   githubUrl: string;
   liveUrl?: string;
   mainImage: string;
+  galleryImages?: ProjectGalleryImage[];
 }
 
 export const PROJECTS_DATA: ProjectItem[] = [
@@ -200,8 +214,25 @@ export const PROJECTS_DATA: ProjectItem[] = [
     mainImage: '/pizzago_mern.jpg'
   },
   {
-    id: 'proj-2',
+    id: 'proj-mindscore',
     number: '02',
+    title: 'MindScore AI — Mental Health Predictor',
+    category: 'Personal Project',
+    description: 'An AI-powered mental well-being and lifestyle prediction platform featuring an interactive Speedometer Arc Gauge, personalized health recommendations, a voice & text AI Wellness Coach, and instant PDF report generation.',
+    tags: ['FastAPI', 'Python', 'Scikit-Learn', 'Machine Learning', 'NLP', 'Speech-to-Text', 'Render'],
+    githubUrl: 'https://github.com/NileshMali25/MindScore-AI',
+    liveUrl: 'https://mindscore-ai-c1yl.onrender.com/',
+    mainImage: '/mindscore_showcase.jpg',
+    galleryImages: [
+      { url: '/mindscore_showcase.jpg', label: 'Showcase' },
+      { url: '/mindscore_dashboard_clean.png', label: 'Dashboard' },
+      { url: '/mindscore_score.png', label: 'AI Score' },
+      { url: '/mindscore_coach.png', label: 'Voice Coach' }
+    ]
+  },
+  {
+    id: 'proj-2',
+    number: '03',
     title: 'Heart Stroke Prediction',
     category: 'Personal Project',
     description: 'An AI healthcare classification system evaluating patient medical metrics using K-Nearest Neighbors and Decision Tree models, served via an interactive Streamlit web dashboard.',
@@ -212,7 +243,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
   },
   {
     id: 'proj-3',
-    number: '03',
+    number: '04',
     title: 'Emergency Alert System',
     category: 'Personal Project',
     description: 'A real-time disaster response and alert dispatch system integrating Leaflet map visualization, live Socket.io communication, Twilio SMS emergency dispatch, and secure JWT authentication.',

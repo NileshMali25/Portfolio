@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { FadeIn } from './FadeIn';
 import { LiveProjectButton } from './LiveProjectButton';
@@ -13,6 +13,14 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards }) => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+
+  const images = project.galleryImages && project.galleryImages.length > 0
+    ? project.galleryImages
+    : [{ url: project.mainImage, label: 'Overview' }];
+
+  const currentImage = images[activeImageIndex] || images[0];
+
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ['start end', 'start start']
@@ -85,13 +93,52 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, totalCards })
         </div>
 
         {/* Full Showcase Image Banner */}
-        <div className="relative w-full flex-1 rounded-[25px] sm:rounded-[35px] md:rounded-[45px] overflow-hidden bg-[#161821] border border-[#252830] min-h-0 shadow-inner group">
-          <img
-            src={project.mainImage}
-            alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+        <div className="relative w-full flex-1 rounded-[25px] sm:rounded-[35px] md:rounded-[45px] overflow-hidden bg-[#101217] border border-[#252830] min-h-0 shadow-inner group flex items-center justify-center">
+          {/* Blurred ambient background for non-cover images */}
+          {currentImage.label !== 'Showcase' && (
+            <div
+              className="absolute inset-0 bg-cover bg-center blur-2xl opacity-30 scale-110 pointer-events-none transition-all duration-500"
+              style={{ backgroundImage: `url(${currentImage.url})` }}
+            />
+          )}
+
+          <motion.img
+            key={currentImage.url}
+            src={currentImage.url}
+            alt={`${project.title} - ${currentImage.label}`}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className={`w-full h-full relative z-10 transition-transform duration-700 ${
+              currentImage.label === 'Showcase'
+                ? 'object-cover group-hover:scale-105'
+                : 'object-contain p-2 sm:p-4 max-h-full'
+            }`}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C]/80 via-transparent to-transparent opacity-60 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0C0C0C]/80 via-transparent to-transparent opacity-40 pointer-events-none z-10" />
+
+          {/* Interactive gallery image tabs if multiple images exist */}
+          {images.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 sm:gap-2 bg-[#0C0C0C]/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 z-20 shadow-[0_4px_25px_rgba(0,0,0,0.9)]">
+              {images.map((img, i) => (
+                <button
+                  key={img.url}
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveImageIndex(i);
+                  }}
+                  className={`px-3 py-1 rounded-full text-xs font-mono transition-all duration-200 cursor-pointer ${
+                    activeImageIndex === i
+                      ? 'bg-[#10B981] text-black font-bold shadow-[0_0_12px_rgba(16,185,129,0.5)] scale-105'
+                      : 'text-[#D7E2EA]/75 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  {img.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </motion.div>
     </div>

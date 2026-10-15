@@ -20,16 +20,16 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-20 overflow-hidden"
+      className="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#0C0C0C] px-4 sm:px-8 md:px-10 py-16 sm:py-24 overflow-hidden select-none"
     >
-      {/* 4 Decorative 3D Images in Corners */}
+      {/* 4 Decorative 3D Images in Corners - Hidden or subtle on mobile to prevent blocking text */}
       {/* Top-Left: AI themed 3D Icon */}
       <FadeIn
         delay={0.1}
-        x={-80}
+        x={-50}
         y={0}
         duration={0.9}
-        className="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] w-[120px] sm:w-[160px] md:w-[210px] pointer-events-none z-0"
+        className="absolute top-[3%] left-[1%] sm:left-[2%] md:left-[4%] w-[60px] sm:w-[110px] md:w-[180px] pointer-events-none z-0 opacity-20 sm:opacity-60 md:opacity-100"
       >
         <img src={aiIcon} alt="AI Neural Network 3D Icon" className="w-full h-auto drop-shadow-[0_10px_30px_rgba(139,92,246,0.3)] animate-pulse" />
       </FadeIn>
@@ -37,10 +37,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
       {/* Bottom-Left: Data Science 3D Object */}
       <FadeIn
         delay={0.25}
-        x={-80}
+        x={-50}
         y={0}
         duration={0.9}
-        className="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] w-[100px] sm:w-[140px] md:w-[180px] pointer-events-none z-0"
+        className="absolute bottom-[5%] left-[2%] sm:left-[5%] md:left-[8%] w-[55px] sm:w-[100px] md:w-[160px] pointer-events-none z-0 opacity-20 sm:opacity-60 md:opacity-100"
       >
         <img src={dataIcon} alt="Data Science 3D Object" className="w-full h-auto drop-shadow-[0_10px_30px_rgba(59,130,246,0.3)]" />
       </FadeIn>
@@ -48,10 +48,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
       {/* Top-Right: Python themed 3D Icon */}
       <FadeIn
         delay={0.15}
-        x={80}
+        x={50}
         y={0}
         duration={0.9}
-        className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] w-[120px] sm:w-[160px] md:w-[210px] pointer-events-none z-0"
+        className="absolute top-[3%] right-[1%] sm:right-[2%] md:right-[4%] w-[60px] sm:w-[110px] md:w-[180px] pointer-events-none z-0 opacity-20 sm:opacity-60 md:opacity-100"
       >
         <img src={pythonIcon} alt="Python Programming 3D Icon" className="w-full h-auto drop-shadow-[0_10px_30px_rgba(245,158,11,0.3)]" />
       </FadeIn>
@@ -59,37 +59,37 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
       {/* Bottom-Right: Full-stack themed 3D Group */}
       <FadeIn
         delay={0.3}
-        x={80}
+        x={50}
         y={0}
         duration={0.9}
-        className="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] w-[130px] sm:w-[170px] md:w-[220px] pointer-events-none z-0"
+        className="absolute bottom-[5%] right-[2%] sm:right-[5%] md:right-[8%] w-[65px] sm:w-[115px] md:w-[180px] pointer-events-none z-0 opacity-20 sm:opacity-60 md:opacity-100"
       >
         <img src={fullstackIcon} alt="Full-stack Database 3D Group" className="w-full h-auto drop-shadow-[0_10px_30px_rgba(16,185,129,0.3)]" />
       </FadeIn>
 
       {/* Main Content Box */}
-      <div className="z-10 flex flex-col items-center text-center max-w-4xl mx-auto">
+      <div className="z-10 flex flex-col items-center text-center max-w-4xl mx-auto px-2 sm:px-4">
         {/* Heading */}
         <FadeIn delay={0} y={40}>
           <h2
             className="hero-heading font-black uppercase leading-none tracking-tight text-center"
-            style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
+            style={{ fontSize: 'clamp(2.5rem, 10vw, 150px)' }}
           >
             About me
           </h2>
         </FadeIn>
 
         {/* Gap between heading and text */}
-        <div className="h-10 sm:h-14 md:h-16" />
+        <div className="h-8 sm:h-12 md:h-16" />
 
         {/* Scroll-driven character opacity animated text */}
         <AnimatedText
           text={paragraphText}
-          className="text-[#D7E2EA] font-medium leading-relaxed max-w-[560px] mx-auto text-[clamp(1rem,2vw,1.35rem)]"
+          className="text-[#D7E2EA] font-medium leading-relaxed max-w-[560px] mx-auto text-sm sm:text-base md:text-xl"
         />
 
         {/* Gap between text block and button */}
-        <div className="h-16 sm:h-20 md:h-24" />
+        <div className="h-10 sm:h-16 md:h-20" />
 
         {/* Contact Button */}
         <FadeIn delay={0.2} y={20}>

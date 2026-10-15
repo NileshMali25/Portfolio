@@ -72,14 +72,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
           {/* Backdrop click to close */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0"
+            className="fixed inset-0"
           />
 
           {/* Modal Container */}
@@ -87,14 +87,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-xl bg-[#121318] border border-[#252830] rounded-3xl p-6 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-10 text-[#D7E2EA]"
+            className="relative w-full max-w-xl bg-[#121318] border border-[#252830] rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.9)] z-10 text-[#D7E2EA] my-auto max-h-[92vh] overflow-y-auto"
           >
             {/* Close Button */}
             <button
               onClick={handleReset}
-              className="absolute top-5 right-5 p-2 rounded-full bg-[#1F232D] text-[#D7E2EA] hover:text-white hover:bg-[#B600A8] transition-colors cursor-pointer"
+              className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-full bg-[#1F232D] text-[#D7E2EA] hover:text-white hover:bg-[#B600A8] transition-colors cursor-pointer z-10"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             {status === 'success' ? (

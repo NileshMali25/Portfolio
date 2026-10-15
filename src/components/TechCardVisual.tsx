@@ -59,8 +59,8 @@ export const TechCardVisual: React.FC<TechCardVisualProps> = ({
       </div>
 
       {/* Title & Subtitle */}
-      <div className="relative z-10 mt-4">
-        <h4 className="text-xl sm:text-22 font-bold text-white tracking-tight leading-snug">
+      <div className="relative z-10 mt-3 sm:mt-4">
+        <h4 className="text-lg sm:text-xl font-bold text-white tracking-tight leading-snug">
           {title}
         </h4>
         <p className="text-xs sm:text-sm text-[#94A3B8] font-normal mt-1">
